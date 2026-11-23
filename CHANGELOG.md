@@ -2,38 +2,8 @@
 
 This file preserves the original development history and preview/hotfix notes from the README through v0.1.9. Entries are retained in their original order, including duplicate notes and earlier limitations; consult the current [README](README.md) for the v0.1.9 overview. Features mentioned in older entries may have changed in subsequent versions. These are development notes, not proof of completed in-app testing.
 
----
 
-## v0.1.6 — Office Persistent Comment Markers Hotfix
-
-- DOCX / PPTX：每一筆能安全重新定位的文字高亮，皆顯示與 PDF 類似的小型方框「+」批註入口；有筆記時顯示「▣」。不再只顯示最新一筆。
-- 切換投影片、文件重開、卷動或視窗重新排版時，標記會依文字錨點重算；無法安全定位不顯示標記，但保留資料。
-- 標記與批註仍存於原有 data.json。Office 文件位元不修改。
-- 未更動 Homepage 排除、Markdown 閱讀模式限制、PDF 功能或 Vittra。
-- 效能：共用一個 Office 滾動定位監聽，不對每個標記增加 timer/observer。大量批註效能仍需實機驗證。
-- 安裝前備份原插件資料夾與 data.json。僅覆蓋 main.js、styles.css、manifest.json、README.md。
-- 本版已檢查 JavaScript 語法與靜態測試，尚待 Obsidian 實機驗證。
-
-# Noctilucent v0.1.4 — Free-position Annotation
-
-以 v0.1.3 Overlay Isolation Hotfix 為基礎。
-- Compact UI Hotfix：自由批註圖示改為便利貼；工具列原有八色色票改成兩欄四列。插件側欄與 Ribbon 的 Stars 品牌圖示保留。
-- 工具列便利貼（Sticky Note）按鈕開啟單次放置模式；點擊任意已載入 PDF 頁面新增自由批註，Esc 或再次點擊取消。連續高亮會自動關閉。
-- 點便利貼開啟原有獨立浮動編輯器；拖曳便利貼可在同一頁內移動，懸停預覽，八色色票改色。
-- PDF 無文字選取時右鍵可新增自由批註；Shift+右鍵或選取文字後右鍵使用原生選單。
-- 側邊欄新增自由批註篩選與統計，支援搜尋、排序、跳轉、編輯、改色、複製、刪除。
-- 自由批註新增、移動、改色及刪除可使用當次工作階段 Undo/Redo；文字編輯仍使用原生文字復原。
-- data.json 沿用原有 items 陣列；新項目 type=sticky-note，anchor 為頁面比例座標。舊高亮不遷移。降版前需備份並移除新類型項目，舊版不認識該類型。
-- 本版尚未經 Obsidian 實機驗證；請先備份 data.json，尤其測試縮放、旋轉、右鍵選單、拖曳與 Vittra。
-
-## 歷史版本記錄
-# Noctilucent 0.1.3 Preview — Annotation Sidebar
-未經 Obsidian 實機驗證的實驗性試用版。請先使用測試 Vault。
-安裝：將 noctilucent 資料夾複製到 Vault/.obsidian/plugins/，重啟 Obsidian，於社群插件啟用。無需 Node.js。
-操作：選取同頁 PDF 文字，按浮動工具列 ▰ 高亮，或 ＋註 開啟批註。選色後可切換連續模式；點 + 或 ▣ 開啟卡片，可刪除標記。拖曳 ⠿ 移動工具列。文字批註自動儲存。
-資料：插件目錄 data.json，原始 PDF 不改寫。請在停用插件後手動備份 data.json；沒有 Markdown 同步、自動備份或匯出功能。勿刪除插件資料夾。依路徑關聯，外部移動/替換 PDF 不保證保留正確位置。
-限制：只支援可選取文字、單頁選取、一般方向 PDF；旋轉與縮放須測試。尚未支援正式規格的其他工具、停駐、富文字、跨裝置等。Vittra 未修改；保留原生文字選取，僅註記按鈕接收指標事件。翻譯避讓僅開卡當下嘗試，未保證相容。連續模式可能同時觸發 Vittra 翻譯。
-測試：先開啟 PDF 確認 Vittra 翻譯；啟用 Noctilucent，選取文字、翻譯、高亮、開卡、重新開啟 PDF、縮放、停用 Noctilucent 後確認 Vittra。若有問題，停用試用版並保留 data.json。
+> **閱讀順序：** 以下依版本由舊至新排列（v0.1.1 → v0.1.9）。同版本的 Hotfix 保留原有記錄順序，原始內容與重複條目維持不變。
 
 ## 0.1.1 修正版
 - 逐文字節點取得選取矩形，合併相鄰同列片段，使用實際批註圖層的座標基準。
@@ -43,6 +13,9 @@ This file preserves the original development history and preview/hotfix notes fr
 - 舊 data.json 格式保留。舊高亮不自動重算；如有偏移，重新選取原文再高亮，或備份後刪除重建。部分重疊的不同選取仍可能是獨立批註。
 - 更新前備份 data.json，只覆蓋 main.js、styles.css、manifest.json、README.md，勿刪除原插件資料夾。
 - 未在 Obsidian 實機驗證；先用測試 PDF。仍限單頁可選取文字，無 Markdown 同步或 PDF 匯出。
+
+
+---
 
 ## 0.1.2（Undo 版，基於 0.1.1）
 - 保留 0.1.1 的高亮座標、渲染、重疊效果與 Vittra 共存設計；不採用先前的 SVG 0.1.2。
@@ -55,6 +28,17 @@ This file preserves the original development history and preview/hotfix notes fr
 - Ctrl+Y（macOS Cmd+Y）恢復目前 PDF 最近撤回的高亮或重新標記操作，可連續重做；保留原始 ID、位置、顏色和已儲存的文字批註。
 - 新增高亮、重新標記變更、手動刪除或卡片改色會清除該 PDF 的重做歷史。文字編輯區不攔截快捷鍵。
 - 撤回及重做歷史均只存在本次插件啟用期間。版本號保持 0.1.2；不改動渲染或 Vittra。
+
+
+---
+
+# Noctilucent 0.1.3 Preview — Annotation Sidebar
+未經 Obsidian 實機驗證的實驗性試用版。請先使用測試 Vault。
+安裝：將 noctilucent 資料夾複製到 Vault/.obsidian/plugins/，重啟 Obsidian，於社群插件啟用。無需 Node.js。
+操作：選取同頁 PDF 文字，按浮動工具列 ▰ 高亮，或 ＋註 開啟批註。選色後可切換連續模式；點 + 或 ▣ 開啟卡片，可刪除標記。拖曳 ⠿ 移動工具列。文字批註自動儲存。
+資料：插件目錄 data.json，原始 PDF 不改寫。請在停用插件後手動備份 data.json；沒有 Markdown 同步、自動備份或匯出功能。勿刪除插件資料夾。依路徑關聯，外部移動/替換 PDF 不保證保留正確位置。
+限制：只支援可選取文字、單頁選取、一般方向 PDF；旋轉與縮放須測試。尚未支援正式規格的其他工具、停駐、富文字、跨裝置等。Vittra 未修改；保留原生文字選取，僅註記按鈕接收指標事件。翻譯避讓僅開卡當下嘗試，未保證相容。連續模式可能同時觸發 Vittra 翻譯。
+測試：先開啟 PDF 確認 Vittra 翻譯；啟用 Noctilucent，選取文字、翻譯、高亮、開卡、重新開啟 PDF、縮放、停用 Noctilucent 後確認 Vittra。若有問題，停用試用版並保留 data.json。
 
 ## 0.1.3 — 批註側邊欄
 - 以 0.1.2 Undo/Redo 為基礎，保留既有矩形渲染、座標及資料格式。
@@ -99,8 +83,26 @@ This file preserves the original development history and preview/hotfix notes fr
 - 未改動資料結構、Vittra 或既有批註。先停用插件、備份 data.json，再覆蓋 main.js、styles.css、README.md。
 - 語法與封裝檢查不等同 Obsidian 實機測試；需確認輸入延遲、卡片定位、拖曳、切換分頁、預覽、主題及多視窗。CSS containment 不保證消除全域樣式重新計算。
 
+
+---
+
+# Noctilucent v0.1.4 — Free-position Annotation
+
+以 v0.1.3 Overlay Isolation Hotfix 為基礎。
+- Compact UI Hotfix：自由批註圖示改為便利貼；工具列原有八色色票改成兩欄四列。插件側欄與 Ribbon 的 Stars 品牌圖示保留。
+- 工具列便利貼（Sticky Note）按鈕開啟單次放置模式；點擊任意已載入 PDF 頁面新增自由批註，Esc 或再次點擊取消。連續高亮會自動關閉。
+- 點便利貼開啟原有獨立浮動編輯器；拖曳便利貼可在同一頁內移動，懸停預覽，八色色票改色。
+- PDF 無文字選取時右鍵可新增自由批註；Shift+右鍵或選取文字後右鍵使用原生選單。
+- 側邊欄新增自由批註篩選與統計，支援搜尋、排序、跳轉、編輯、改色、複製、刪除。
+- 自由批註新增、移動、改色及刪除可使用當次工作階段 Undo/Redo；文字編輯仍使用原生文字復原。
+- data.json 沿用原有 items 陣列；新項目 type=sticky-note，anchor 為頁面比例座標。舊高亮不遷移。降版前需備份並移除新類型項目，舊版不認識該類型。
+- 本版尚未經 Obsidian 實機驗證；請先備份 data.json，尤其測試縮放、旋轉、右鍵選單、拖曳與 Vittra。
+
 ### Save & Close Hotfix (v0.1.4)
 - Clicking 儲存 in a floating annotation card closes only that card after a successful write (or if already saved). Background autosave, Ctrl+S and sidebar editing keep their existing behavior. Failed writes or changes during the pending save leave the card open. Existing data and UI layout are unchanged.
+
+
+---
 
 ## v0.1.5 — Area Highlight Annotation
 
@@ -157,6 +159,19 @@ PDF 原文卡片、搜尋與複製使用去除 PDF 視覺換行的顯示文字�
 - 保留原始 text 與既有批註，不新增掃描或計時器。索引按需解析並快取。不做上標或英文斷字修復，不額外插入原始文字沒有的中英文間距。
 - 已用使用者提供的三組中文及三組英文 rawText 進行 Node 離線回歸測試：χ 前方、α 後方的異常控制字元轉為空格，χ2 保留原樣；未知 PDF 或頁碼不套用索引。尚未實機量測或驗收。
 
+
+
+---
+
+## v0.1.6 — Office Persistent Comment Markers Hotfix
+
+- DOCX / PPTX：每一筆能安全重新定位的文字高亮，皆顯示與 PDF 類似的小型方框「+」批註入口；有筆記時顯示「▣」。不再只顯示最新一筆。
+- 切換投影片、文件重開、卷動或視窗重新排版時，標記會依文字錨點重算；無法安全定位不顯示標記，但保留資料。
+- 標記與批註仍存於原有 data.json。Office 文件位元不修改。
+- 未更動 Homepage 排除、Markdown 閱讀模式限制、PDF 功能或 Vittra。
+- 效能：共用一個 Office 滾動定位監聽，不對每個標記增加 timer/observer。大量批註效能仍需實機驗證。
+- 安裝前備份原插件資料夾與 data.json。僅覆蓋 main.js、styles.css、manifest.json、README.md。
+- 本版已檢查 JavaScript 語法與靜態測試，尚待 Obsidian 實機驗證。
 
 ## v0.1.6 — Markdown Reading View Text-only Preview
 - 只在 Obsidian Markdown **閱讀模式**啟用文字高亮與文字批註；編輯模式不呈現 Noctilucent 的 Markdown 工具列、標記或卡片。PDF 功能維持不變。
@@ -246,6 +261,9 @@ This update builds on `Noctilucent-0.1.6-office-md-undo-redo-hotfix.zip` and pre
 
 **Testing note:** Obsidian UI behavior and large documents must still be tested in the actual vault. This is a preview build, not a production-certified migration or a substitute for the user's own backup.
 
+
+---
+
 ## v0.1.7 Eraser & Markdown Smart Re-anchoring Preview
 
 - PDF / DOCX / PPTX / Markdown Reading View floating toolbars: eraser (⌫) removes the entire selected text-highlight record and its note, with confirmation for nonempty notes; Ctrl+Z / Ctrl+Y undo or redo the erasure in the current session. Free-position and area annotations are excluded. Escape exits eraser mode. Eraser and continuous highlighter are mutually exclusive.
@@ -264,6 +282,9 @@ This update builds on `Noctilucent-0.1.6-office-md-undo-redo-hotfix.zip` and pre
 - PDF eraser supports text highlights, free-position notes (click marker), and area highlights (click/drag inside the region or click marker). Existing note confirmation and undo/redo are retained. Text highlights take precedence over area highlights where they overlap.
 
 
+
+---
+
 ## v0.1.8 — 匯出高亮與批註（Markdown）
 
 在 Noctilucent 側邊欄，點擊「匯出高亮與批註…」。此操作會匯出**目前文件所有標記**（包括文字高亮、含批註的高亮、PDF 自由批註與區域高亮），不受搜尋、顏色篩選或釘選影響。
@@ -277,6 +298,9 @@ This update builds on `Noctilucent-0.1.6-office-md-undo-redo-hotfix.zip` and pre
 - 若存在同名匯出文件，使用 `(2)`、`(3)` 等後綴建立新版本；不覆蓋既有匯出筆記。
 - 這是一次性的匯出快照，後續編輯匯出筆記不會與原始批註同步。
 
+
+
+---
 
 ## v0.1.9 · 介面國際化 (Traditional Chinese / English)
 
