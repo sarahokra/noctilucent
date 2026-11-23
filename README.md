@@ -59,9 +59,15 @@ Under **Settings → Community plugins → Noctilucent → Interface language**,
 - Exported Markdown is a **one-time snapshot**, not a live bidirectional synchronization. PDF page links are available; precise jumps to text in Office/Markdown are not guaranteed.
 - Text-selection and translation-tool coexistence depends on the active viewer and local setup; verify overlapping shortcuts and selection behavior when combining tools. Earlier notes do not claim full compatibility testing.
 
+## Building from source
+
+Noctilucent v0.1.9 has a zero-dependency, reproducible Node.js build. Run `npm run check` to verify that the committed `main.js` matches the output generated from `src/main.template.js` and the two `src/data/` PDF recovery indexes; use `npm run build` to regenerate it. See [Build instructions](docs/BUILD.md) for details and caveats.
+
+The original `main.js` is deliberately unchanged: the large PDF recovery indexes have been **separated in the source tree but remain embedded in the release file** to avoid introducing runtime or installation changes. The source dictionaries in `src/i18n/` are maintenance references and are not imported automatically by the v0.1.9 builder.
+
 ## Project status and development notes
 
-Noctilucent is under active development. The repository currently includes a bundled JavaScript plugin and language-resource files; a complete reproducible source/build workflow and broader cross-environment compatibility coverage remain publication preparation tasks. The features listed above have been exercised by the author in an actual Obsidian desktop environment.
+Noctilucent is under active development. The repository now includes the distributed JavaScript, a reconstructible source template, PDF recovery indexes, and a working build/check script. Broader cross-environment compatibility verification remains a publication-preparation task. The features listed above have been exercised by the author in an actual Obsidian desktop environment.
 
 For individual changes, hotfixes, historical limitations, and test caveats through v0.1.9, see the [English changelog](CHANGELOG.md) or [Traditional Chinese changelog](CHANGELOG.zh-TW.md). The [original mixed-language development log](docs/CHANGELOG.original.md) is also preserved.
 
