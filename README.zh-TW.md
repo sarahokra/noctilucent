@@ -2,6 +2,8 @@
 
 此為 v0.1.9 的繁體中文語言補充說明。主要功能與安裝方式請參閱既有 [README.md](README.md)。
 
+更新歷程請參閱：[繁體中文 CHANGELOG](CHANGELOG.zh-TW.md)｜[英文 CHANGELOG](CHANGELOG.md)｜[完整原始開發紀錄](docs/CHANGELOG.original.md)。
+
 ## 介面語言
 
 在 Obsidian 設定 → 社群插件 → Noctilucent → **介面語言**，選擇：
