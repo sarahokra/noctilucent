@@ -2,7 +2,7 @@
 
 This is the complete English-language record of versions v0.1.1 through v0.1.9, including individual hotfixes, technical limitations, and testing caveats. Entries are ordered from oldest to newest; historical caveats may have changed in later versions. These are development notes, **not proof of completed in-app acceptance testing**.
 
-**Language:** English | [繁體中文](CHANGELOG.zh-TW.md) | [Original unabridged record](docs/CHANGELOG.original.md)
+**Language:** English | [Traditional Chinese](CHANGELOG.zh-TW.md) | [Original unabridged record](docs/CHANGELOG.original.md)
 
 ## v0.1.1 — Highlight and Annotation Fixes
 
@@ -127,7 +127,7 @@ Based on the v0.1.3 Overlay Isolation Hotfix.
 
 ### v0.1.4 — Save & Close Hotfix
 
-- Clicking 儲存 in a floating annotation card closes only that card after a successful write (or if already saved). Background autosave, Ctrl+S and sidebar editing keep their existing behavior. Failed writes or changes during the pending save leave the card open. Existing data and UI layout are unchanged.
+- Clicking Save in a floating annotation card closes only that card after a successful write (or if already saved). Background autosave, Ctrl+S and sidebar editing keep their existing behavior. Failed writes or changes during the pending save leave the card open. Existing data and UI layout are unchanged.
 
 
 ---
@@ -313,7 +313,7 @@ PDF remains the canonical interface and is unchanged in this release. For Markdo
 
 This update builds on `Noctilucent-0.1.6-office-md-undo-redo-hotfix.zip` and preserves the PDF-first interface, Office Viewer, Markdown Reading View, and the original data structure.
 
-- **Search scope:** the existing sidebar search supports `原文＋批註`, `僅原文`, and `僅批註`. All searches apply only to the selected document; existing color and type filters still apply.
+- **Search scope:** the existing sidebar search supports “Source Text + Annotations”, “Source Text Only”, and “Annotations Only”. All searches apply only to the selected document; existing color and type filters still apply.
 - **Pin annotations:** the small pin on each sidebar row pins that annotation above unpinned rows, to a maximum of three **per source document**. Pure highlights and notes can both be pinned. Pin state is stored as the optional `pinnedAt` field on the annotation; no data migration is needed.
 - **Bulk-open / close cards:** only annotations with nonempty note text are eligible. A second click closes only cards opened by that bulk action, preserving already-open manually created cards. More than twelve notes requires confirmation. Only safely resolved/loaded locations are opened; offscreen, unloaded, or ambiguous PDF/Office/Markdown anchors are skipped rather than opening cards at incorrect locations.
 - **Delete current document:** a confirmation names the file and count. It first flushes pending saves and writes a **full** independent `data.json` snapshot to `.obsidian/plugins/noctilucent/backups/before-delete-*.json` (actual config directory when customized). If backup creation fails, nothing is deleted. The bulk operation is added to session undo/redo history. The source PDF/DOCX/PPTX/Markdown file is not changed.
