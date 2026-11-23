@@ -1,6 +1,6 @@
 # Noctilucent — Development Changelog
 
-This file preserves the original development history and preview/hotfix notes from the README through v0.1.9. Entries are retained in their original order, including duplicate notes and earlier limitations; consult the current [README](README.md) for the v0.1.9 overview. Features mentioned in older entries may have changed in subsequent versions. These are development notes, not proof of completed in-app testing.
+This file preserves the original development history and preview/hotfix notes from the README through v0.1.9. Entries are grouped chronologically by version, with original hotfix details, duplicate notes, and earlier limitations preserved; consult the current [README](README.md) for the v0.1.9 overview. Features mentioned in older entries may have changed in subsequent versions. These are development notes, not proof of completed in-app testing.
 
 
 > **閱讀順序：** 以下依版本由舊至新排列（v0.1.1 → v0.1.9）。同版本的 Hotfix 保留原有記錄順序，原始內容與重複條目維持不變。
