@@ -1,0 +1,6 @@
+# Local plugin user data must never enter a public repository
+data.json
+backups/
+node_modules/
+*.log
+.DS_Store
