@@ -1,0 +1,170 @@
+.noctilucent-toolbar,.noctilucent-card{position:absolute;z-index:100;display:flex;gap:4px;padding:6px;border:1px solid var(--background-modifier-border);border-radius:8px;background:var(--background-primary);color:var(--text-normal);box-shadow:0 3px 14px #0003;font-size:12px}
+.noctilucent-toolbar{flex-direction:column;max-height:85%;overflow:auto}.noctilucent-toolbar button{min-width:30px;padding:3px 5px;height:25px}.noctilucent-toolbar>button:first-child,.noctilucent-head{cursor:grab;touch-action:none}.noctilucent-card{width:320px;height:220px;min-width:200px;min-height:120px;max-width:95%;max-height:85%;resize:both;overflow:auto;flex-direction:column}.noctilucent-head{display:flex;justify-content:space-between;align-items:center;font-weight:600}.noctilucent-card textarea{flex:1;min-height:60px;width:100%;resize:none}.noctilucent-card button{font-size:11px}.noctilucent-card>div:last-child{display:flex;gap:5px;flex-wrap:wrap}
+.noctilucent-card-colors{display:flex;gap:3px;flex-wrap:wrap}.noctilucent-card-colors button{min-width:23px;padding:1px 3px;font-size:16px;line-height:1.15}.noctilucent-preview{width:280px;height:auto;min-height:0;max-height:180px;resize:none;white-space:pre-wrap;overflow:hidden;pointer-events:none}.noctilucent-marker{box-shadow:none!important;min-width:0!important;min-height:0!important}
+
+/* Noctilucent native annotation sidebar — scoped to its own view. */
+.noctilucent-sidebar{height:100%;min-height:0;display:flex;flex-direction:column;gap:6px;padding:8px;font-size:12px;color:var(--text-normal);overflow:hidden}
+.noctilucent-sidebar [hidden]{display:none!important}
+.noctilucent-side-row{display:flex;align-items:center;gap:4px;flex-wrap:wrap}.noctilucent-side-row strong,.noctilucent-side-row>span:first-child{margin-inline-end:auto}
+.noctilucent-sidebar button,.noctilucent-sidebar select{font-size:11px;min-width:0;height:auto;min-height:23px;padding:3px 5px}.noctilucent-sidebar input[type=search]{width:100%;min-width:0}.noctilucent-side-file{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.noctilucent-side-muted{color:var(--text-muted);font-size:11px}.noctilucent-side-palette{display:flex;gap:3px;flex-wrap:wrap}.noctilucent-side-palette button{font-size:15px;line-height:1;box-shadow:none}.noctilucent-side-palette button:first-child{font-size:11px}.noctilucent-sidebar button[aria-pressed=true]{outline:1px solid var(--interactive-accent);outline-offset:-1px}.noctilucent-side-list{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:5px}.noctilucent-side-group{font-size:10px;color:var(--text-muted);padding:5px 1px 1px;font-weight:600}.noctilucent-side-item{border:1px solid var(--background-modifier-border);border-inline-start:3px solid;border-radius:5px;padding:5px 6px;display:flex;flex-direction:column;gap:4px;background:var(--background-primary)}.noctilucent-sidebar .noctilucent-side-quote{display:block;background:none;box-shadow:none;text-align:start;white-space:normal;overflow-wrap:anywhere;padding:2px 0;color:var(--text-normal);font-size:12px;cursor:pointer}.noctilucent-side-note{white-space:pre-wrap;overflow-wrap:anywhere;color:var(--text-muted);border-top:1px solid var(--background-modifier-border);padding-top:3px}.noctilucent-side-note:empty{display:none}.noctilucent-sidebar .is-compact{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}.noctilucent-sidebar .noctilucent-side-editor{width:100%;min-height:85px;resize:vertical;font-size:12px}
+
+.noctilucent-toolbar{z-index:101;max-width:100%;box-sizing:border-box}
+/* Performance hotfix: compact save controls, scoped to annotation editors. */
+.noctilucent-save-row{display:flex;align-items:center;gap:6px;justify-content:space-between;flex:1 0 100%;min-width:0;font-size:11px}
+.noctilucent-save-row[hidden],.noctilucent-save-row [hidden]{display:none!important}
+.noctilucent-save-status{color:var(--text-muted);font-size:11px;min-height:1.2em;display:inline-flex;align-items:center}
+.noctilucent-save-status[data-state=pending]{color:var(--text-muted)}
+.noctilucent-save-status[data-state=saved]{color:var(--text-success,var(--text-muted))}
+.noctilucent-save-status[data-state=error]{color:var(--text-error)}
+.noctilucent-save-row button{margin-inline-start:auto}
+
+/* Independent overlay: PDF-relative coordinates, outside the PDF DOM subtree. */
+.noctilucent-overlay{position:fixed;z-index:110;pointer-events:none;overflow:hidden;contain:layout paint style;isolation:isolate;box-sizing:border-box}
+.noctilucent-overlay .noctilucent-card{pointer-events:auto;contain:layout paint style;box-sizing:border-box}
+.noctilucent-overlay .noctilucent-preview{pointer-events:none}
+.noctilucent-side-editor,.noctilucent-card textarea{contain:layout paint style}
+
+/* v0.1.4: free-position annotations; no changes to overlay/editor containment. */
+.noctilucent-toolbar .noctilucent-sticky-tool[aria-pressed=true]{outline:2px solid var(--interactive-accent);background:var(--interactive-accent);color:var(--text-on-accent)}
+.noctilucent-toolbar .noctilucent-sticky-tool svg{width:17px;height:17px}
+.noctilucent-placement,.noctilucent-placement *{cursor:crosshair!important}
+.noctilucent-placement .textLayer{user-select:none!important}
+.noctilucent-sticky-marker{position:absolute;transform:translate(-50%,-50%);width:19px;height:19px;padding:0!important;display:flex;align-items:center;justify-content:center;border:1px solid #7778;border-radius:4px;color:#333;pointer-events:auto;cursor:grab;touch-action:none;z-index:5}
+.noctilucent-sticky-marker svg{width:14px;height:14px;pointer-events:none}
+.noctilucent-sticky-marker.is-dragging{cursor:grabbing}
+
+/* Compact toolbar palette: two columns, all eight original colors. */
+.noctilucent-toolbar-palette{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;flex:none;padding:2px;box-sizing:border-box}
+.noctilucent-toolbar .noctilucent-toolbar-palette button{min-width:24px;width:100%;height:25px;padding:1px 2px;cursor:pointer;box-sizing:border-box}
+.noctilucent-side-sticky-icon{display:inline-flex;vertical-align:middle;margin-inline-end:4px}
+.noctilucent-side-sticky-icon svg{width:13px;height:13px}
+
+/* Area annotations: inert rectangles, interactive handles only during explicit editing. */
+.noctilucent-area-placement,.noctilucent-area-placement *{cursor:crosshair!important}
+.noctilucent-area-placement .textLayer{user-select:none!important}
+.noctilucent-area-rect,.noctilucent-area-draft{position:absolute;box-sizing:border-box;pointer-events:none}
+.noctilucent-area-draft{z-index:7;border-style:dashed!important}
+.noctilucent-area-marker{cursor:pointer;z-index:6}
+.noctilucent-area-handle{position:absolute;transform:translate(-50%,-50%);width:10px;height:10px;min-width:0!important;min-height:0!important;padding:0!important;border:1px solid var(--interactive-accent);background:var(--background-primary);border-radius:2px;pointer-events:auto;touch-action:none;z-index:8;cursor:crosshair}
+.noctilucent-area-handle[data-kind=move]{width:22px;height:22px;cursor:move}
+.noctilucent-area-handle svg{width:15px;height:15px;pointer-events:none}
+.noctilucent-area-controls{display:flex;flex-wrap:wrap;align-items:center;gap:4px;font-size:11px}
+.noctilucent-area-controls select{max-width:100%;font-size:11px}
+.noctilucent-area-controls input[type=range]{width:76px;min-width:0}
+
+/* Compact text-highlight group: continuous mode belongs only to text highlighting. */
+.noctilucent-highlight-group{display:flex;flex-direction:column;gap:2px;padding:2px;border:1px solid var(--background-modifier-border);border-radius:5px;flex:none}
+.noctilucent-highlight-group button{width:100%;box-sizing:border-box}
+.noctilucent-highlight-group button:first-child{font-size:10px;height:22px;padding:1px 3px}
+
+/* v0.1.6 — Markdown reading view: CSS Custom Highlights do not modify Markdown text or DOM. */
+::highlight(noctilucent-md-0){background-color:#F5D54770}
+::highlight(noctilucent-md-1){background-color:#F3A05C70}
+::highlight(noctilucent-md-2){background-color:#ED94B770}
+::highlight(noctilucent-md-3){background-color:#A9D38C70}
+::highlight(noctilucent-md-4){background-color:#78B8ED70}
+::highlight(noctilucent-md-5){background-color:#B5A0DE70}
+::highlight(noctilucent-md-6){background-color:#73D2CD70}
+::highlight(noctilucent-md-7){background-color:#B4B8BF70}
+.noctilucent-md-bar{display:flex;align-items:center;gap:4px;flex-wrap:wrap;margin:8px 0 14px;padding:5px 7px;background:var(--background-secondary);border:1px solid var(--background-modifier-border);border-radius:7px;font-size:12px;user-select:none}
+.noctilucent-md-bar button{min-width:26px;min-height:26px;padding:2px 6px;border:1px solid var(--background-modifier-border);border-radius:5px;background:var(--background-primary);cursor:pointer}
+.noctilucent-md-bar button[aria-pressed=true]{outline:2px solid var(--interactive-accent)}
+.noctilucent-md-card{position:absolute;z-index:20;width:320px;max-width:calc(100% - 16px);padding:9px;background:var(--background-primary);border:1px solid var(--background-modifier-border);border-radius:7px;box-shadow:0 6px 22px #0003;display:flex;flex-direction:column;gap:7px}
+.noctilucent-md-card-head{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12px}
+.noctilucent-md-card-head button{cursor:pointer}
+.noctilucent-md-card-quote{font-size:12px;color:var(--text-muted);max-height:70px;overflow:auto;white-space:pre-wrap}
+.noctilucent-md-card-editor{box-sizing:border-box;width:100%;min-height:90px;resize:vertical;contain:layout paint style}
+.markdown-reading-view:has(> .noctilucent-md-bar){position:relative}
+
+/* v0.1.6 floating Markdown toolbar: absolutely positioned in the reading view's
+   pane, not in markdown-preview-sizer; no inline edits, images or area tools. */
+.noctilucent-md-floating-host{position:relative}
+.noctilucent-md-floating-host > .noctilucent-md-bar{position:absolute;z-index:102;display:flex;flex-direction:column;align-items:stretch;flex-wrap:nowrap;gap:4px;margin:0;padding:6px;width:82px;max-width:calc(100% - 8px);max-height:85%;overflow:auto;box-sizing:border-box;background:var(--background-primary);box-shadow:0 3px 14px #0003}
+.noctilucent-md-bar .noctilucent-md-grip{cursor:grab;touch-action:none;user-select:none}
+.noctilucent-md-bar .noctilucent-highlight-group{flex-direction:column}
+.noctilucent-md-bar .noctilucent-toolbar-palette{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;min-width:0}
+.noctilucent-md-bar .noctilucent-toolbar-palette button{min-width:0;width:100%;height:25px;padding:1px 2px}
+.noctilucent-md-bar .noctilucent-md-mode{font-size:10px;min-height:24px;padding:2px}
+.noctilucent-md-bar .noctilucent-md-mode[aria-pressed=true]{outline:2px solid var(--interactive-accent);background:var(--interactive-accent);color:var(--text-on-accent)}
+
+/* Persistent Office markers mirror the small square at the end of PDF highlights. */
+.noctilucent-md-floating-host > .noctilucent-office-persistent-marker{
+ position:absolute;z-index:104;display:block;width:12px;height:12px;padding:0;
+ transform:translate(-90%,-85%);border:1px solid #888;border-radius:3px;
+ color:#222;font-size:9px;line-height:10px;text-align:center;
+ pointer-events:auto;cursor:pointer;user-select:none;
+}
+.noctilucent-md-floating-host > .noctilucent-office-persistent-marker:hover{
+ outline:1px solid var(--interactive-accent);outline-offset:1px;
+}
+
+/* v0.1.6 Office card parity: PDF palette and confirmed Save & Close. */
+.noctilucent-md-card .noctilucent-md-card-colors{display:flex;gap:4px;align-items:center;flex-wrap:wrap}
+.noctilucent-md-card .noctilucent-md-card-colors button{min-width:23px;min-height:23px;padding:1px 3px;border:1px solid var(--background-modifier-border);border-radius:5px;background:var(--background-primary);font-size:17px;line-height:1}
+.noctilucent-md-card .noctilucent-md-card-colors button[aria-pressed=true]{outline:2px solid var(--interactive-accent);outline-offset:-1px}
+.noctilucent-md-card-footer{display:flex;flex-direction:column;gap:6px}
+.noctilucent-md-card-footer .noctilucent-save-row{flex:0 0 auto;width:100%}
+.noctilucent-md-card-actions{display:flex;gap:5px;flex-wrap:wrap}
+.noctilucent-md-card-actions button{font-size:11px}
+
+/* Office/Markdown annotation card repositioning; no source-document mutation. */
+.noctilucent-md-card-head{cursor:grab;user-select:none;touch-action:none}
+.noctilucent-md-card-dragging .noctilucent-md-card-head{cursor:grabbing}
+.noctilucent-md-card-head button{cursor:pointer;touch-action:auto}
+
+/* PDF canonical card parity on Markdown reading and Office Viewer. */
+.noctilucent-md-card{
+ width:320px; min-width:260px; min-height:190px; max-width:calc(100% - 16px);
+ max-height:calc(100% - 16px); resize:both; overflow:auto;
+}
+.noctilucent-md-card-head{cursor:grab;touch-action:none}
+.noctilucent-md-card-quote{display:none}
+.noctilucent-md-hover-preview{
+ position:absolute;z-index:145;width:max-content;max-width:260px;max-height:150px;
+ overflow:auto;pointer-events:none;white-space:pre-wrap;overflow-wrap:anywhere;
+ padding:7px 9px;border-radius:6px;border:1px solid var(--background-modifier-border);
+ color:var(--text-normal);background:var(--background-primary);
+ box-shadow:0 3px 12px #0003;font-size:12px;line-height:1.45;
+}
+
+/* v0.1.6 Sidebar management: compact controls matching PDF core UI. */
+.noctilucent-side-bulk{gap:5px;flex-wrap:wrap}
+.noctilucent-sidebar .noctilucent-side-bulk button{flex:1 1 auto;min-width:0}
+.noctilucent-sidebar .noctilucent-side-delete-all{color:var(--text-error);border-color:var(--background-modifier-error, var(--background-modifier-border))}
+.noctilucent-sidebar .noctilucent-side-pin{font-size:12px;min-width:22px;padding:3px 4px}
+.noctilucent-sidebar .noctilucent-side-pin[aria-pressed=true]{color:var(--interactive-accent);font-weight:700}
+
+/* v0.1.7 preview: eraser is mutually exclusive with continuous highlighting. */
+.noctilucent-toolbar .noctilucent-eraser,.noctilucent-md-bar .noctilucent-eraser{min-height:25px;font-size:17px;cursor:pointer}
+.noctilucent-toolbar .noctilucent-eraser[aria-pressed=true],.noctilucent-md-bar .noctilucent-eraser[aria-pressed=true]{outline:2px solid var(--interactive-accent);outline-offset:-1px;background:var(--background-modifier-hover)}
+
+.noctilucent-toolbar .noctilucent-eraser svg,.noctilucent-md-bar .noctilucent-eraser svg{width:17px;height:17px;pointer-events:none}
+
+/* v0.1.7: eraser mode changes the reading cursor only; editor mode is excluded. */
+/* The PDF iframe has its own document; use the same SVG hotspot there. */
+.noctilucent-eraser-active .textLayer,
+.noctilucent-eraser-active .textLayer *,
+.noctilucent-eraser-active .markdown-preview-view,
+.noctilucent-eraser-active .markdown-preview-view *,
+.noctilucent-eraser-active .pptx-viewer__slide,
+.noctilucent-eraser-active .pptx-viewer__slide *,
+.noctilucent-eraser-active .office-viewer-docx-reading-body,
+.noctilucent-eraser-active .office-viewer-docx-reading-body *,
+.noctilucent-eraser-active .office-viewer-document,
+.noctilucent-eraser-active .office-viewer-document *,
+.noctilucent-eraser-active .page,
+.noctilucent-eraser-active .page *,
+.noctilucent-eraser-pdf-document .page,
+.noctilucent-eraser-pdf-document .page *{cursor:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%3E%3Cg%20transform%3D%22rotate%28-42%2015%2015%29%22%3E%3Crect%20x%3D%228%22%20y%3D%224%22%20width%3D%2216%22%20height%3D%2224%22%20rx%3D%223%22%20fill%3D%22%23f7f3ff%22%20stroke%3D%22%23211f28%22%20stroke-width%3D%222%22%2F%3E%3Cpath%20d%3D%22M8%2018h16%22%20stroke%3D%22%23211f28%22%20stroke-width%3D%222%22%2F%3E%3Cpath%20d%3D%22M9%2018h14v7a2%202%200%200%201-2%202H11a2%202%200%200%201-2-2z%22%20fill%3D%22%23b5a0de%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E") 9 26,auto!important;user-select:none!important;}
+/* Controls and editable surfaces must retain native interaction behavior. */
+.noctilucent-eraser-active :is(.noctilucent-toolbar,.noctilucent-md-bar,.noctilucent-card,.noctilucent-md-card,.noctilucent-sidebar,.cm-editor,textarea,input,button:not(.noctilucent-marker)),
+.noctilucent-eraser-active :is(.noctilucent-toolbar,.noctilucent-md-bar,.noctilucent-card,.noctilucent-md-card,.noctilucent-sidebar,.cm-editor,textarea,input,button:not(.noctilucent-marker)) *{cursor:revert!important;user-select:auto!important;}
+
+.noctilucent-eraser[aria-pressed="true"]{outline:2px solid var(--interactive-accent);background:var(--interactive-accent);color:var(--text-on-accent);}
+
+/* v0.1.8: Markdown export UI; does not affect PDF canvas/annotation overlays. */
+.noctilucent-side-export{width:100%;text-align:center}
+.noctilucent-export-modal{display:flex;flex-direction:column;gap:8px}
+.noctilucent-export-modal label{display:flex;flex-direction:column;gap:5px}
+.noctilucent-export-name{width:100%}
+.noctilucent-export-modal .noctilucent-side-row{justify-content:flex-end;margin-top:8px}
