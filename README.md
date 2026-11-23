@@ -4,9 +4,25 @@
 
 **Current version:** 0.1.9 (desktop-only preview) · **Author:** AOI · **Minimum Obsidian version declared:** 1.12.0
 
-> **Preview status:** This project is not yet released through Obsidian Community Plugins. Earlier development notes report JavaScript/static checks, but not comprehensive real-world Obsidian testing. Back up your vault and annotation data, and try it in a test vault before using it for important research.
+> **Release status:** Noctilucent v0.1.9 is a desktop-only preview, not yet listed in Obsidian Community Plugins. The author has tested and used the available features in a real Obsidian environment, with no known blocking issues in that environment. This is not a guarantee of compatibility with every operating system, viewer version, or document. Back up your vault and annotation data before upgrades.
 
 [Traditional Chinese guide](README.zh-TW.md) · [Changelog (English)](CHANGELOG.md) · [更新紀錄（繁體中文）](CHANGELOG.zh-TW.md)
+
+## Why Noctilucent?
+
+**Highlight freely. Annotate naturally.**
+
+Noctilucent was created around a reading-first approach: noticing an important passage should not require writing a note, choosing a semantic category, or opening a permanent sidebar.
+
+- **Highlight first, annotate when needed.** A highlight stands on its own. Add a comment to that highlight now or later.
+- **Write in context.** Open a movable, sticky-note-style annotation card within the current document view, close to the passage you are reading, without reserving a permanent sidebar or page margin.
+- **Choose color independently.** Use the highlight color you prefer without having to assign a category or give your thought a predefined meaning.
+- **Keep the page in focus.** Cards appear on demand; highlights remain visible without demanding a note.
+- **Stay consistent across formats.** The same reading-first interaction principles extend to supported PDF, DOCX, PPTX, and Markdown Reading View documents, within each viewer's technical limits.
+
+**Design principle:** The annotation tool should adapt to the reader, not the reader to the annotation tool.
+
+Read the [Product Vision](docs/PRODUCT-VISION.md) for the origin, interaction principles, and design goals.
 
 ## Features in the current preview
 
@@ -18,14 +34,14 @@
 - **Markdown export (introduced in v0.1.8):** Export annotations from the current document into a separate Markdown snapshot without altering the source file or the original annotations. Exports are not synchronized with subsequent edits.
 - **English and Traditional Chinese interface (v0.1.9):** Auto, English, and 繁體中文 language choices. Auto uses Traditional Chinese for Chinese Obsidian locales and English for other locales. This affects interface strings, not selected text or existing annotation data.
 
-These capabilities are described in the project's version notes. Their reliability on a particular Obsidian version, operating system, PDF, or Office file still requires hands-on verification.
+The author has tested the available features in a real Obsidian desktop environment. Compatibility across different systems, Obsidian versions, viewer implementations, and document structures is not universally guaranteed.
 
 ## Installation (manual preview)
 
 1. Back up your Obsidian vault and, if updating, the existing `.obsidian/plugins/noctilucent/data.json` file.
 2. Copy `manifest.json`, `main.js`, and `styles.css` into `<your vault>/.obsidian/plugins/noctilucent/`.
 3. Restart Obsidian or reload its plugins, then enable **Noctilucent** under **Settings → Community plugins**.
-4. Open a supported document in a **test vault** to try the available annotation controls.
+4. Open a supported document to use the annotation controls. For first-time setup or significant updates, a test vault is recommended.
 
 The `src/i18n/` files are maintainable language resources. The currently supplied `main.js` already contains the language dictionaries; these source resources are not separately required for manual installation.
 
@@ -39,13 +55,13 @@ Under **Settings → Community plugins → Noctilucent → Interface language**,
 - Highlighting and annotation data are maintained separately from the source PDF, Office, or Markdown files; source files are not intentionally rewritten by these annotation features.
 - Text positioning depends on the host viewer and whether the original text remains selectable and uniquely identifiable. Some selections may not be safely re-anchored after changes, resizing, or viewer updates; the plugin may suppress a marker rather than display it in the wrong place.
 - Markdown annotations are limited to Reading View. `Homepage.md` and configured homepage-style documents are excluded from the Markdown annotation overlay.
-- Office Viewer compatibility is experimental: rasterized text, some PowerPoint slide content, and varying viewer structures may not support selectable text or reliable positioning.
+- Office Viewer limitations: rasterized text, some PowerPoint slide content, and varying viewer structures may not support selectable text or reliable positioning.
 - Exported Markdown is a **one-time snapshot**, not a live bidirectional synchronization. PDF page links are available; precise jumps to text in Office/Markdown are not guaranteed.
-- Coexistence with other selection/translation plugins, including Vittra, should be verified in your environment. Earlier notes do not claim full compatibility testing.
+- Text-selection and translation-tool coexistence depends on the active viewer and local setup; verify overlapping shortcuts and selection behavior when combining tools. Earlier notes do not claim full compatibility testing.
 
 ## Project status and development notes
 
-Noctilucent is under active development. The repository currently includes a bundled JavaScript plugin and language-resource files; a complete reproducible source/build workflow and broader compatibility testing remain publication preparation tasks.
+Noctilucent is under active development. The repository currently includes a bundled JavaScript plugin and language-resource files; a complete reproducible source/build workflow and broader cross-environment compatibility coverage remain publication preparation tasks. The features listed above have been exercised by the author in an actual Obsidian desktop environment.
 
 For individual changes, hotfixes, historical limitations, and test caveats through v0.1.9, see the [English changelog](CHANGELOG.md) or [Traditional Chinese changelog](CHANGELOG.zh-TW.md). The [original mixed-language development log](docs/CHANGELOG.original.md) is also preserved.
 
