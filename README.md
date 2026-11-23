@@ -51,4 +51,4 @@ For individual changes, hotfixes, historical limitations, and test caveats throu
 
 ## License
 
-A license has **not yet been selected**. Please do not assume permission to redistribute or reuse source code beyond what applicable law permits. A license file will be added after the project owner chooses the terms.
+Noctilucent is licensed under the [MIT License](LICENSE). Copyright (c) 2026 AOI. The license permits use, modification, redistribution, and commercial use, provided the copyright and license notices are retained. Third-party components, if any, remain subject to their own licenses.
