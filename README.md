@@ -59,6 +59,16 @@ Under **Settings → Community plugins → Noctilucent → Interface language**,
 - Exported Markdown is a **one-time snapshot**, not a live bidirectional synchronization. PDF page links are available; precise jumps to text in Office/Markdown are not guaranteed.
 - Text-selection and translation-tool coexistence depends on the active viewer and local setup; verify overlapping shortcuts and selection behavior when combining tools. Earlier notes do not claim full compatibility testing.
 
+## Local PDF access and privacy
+
+Noctilucent stores highlights and annotations locally in the plugin's `data.json`. For experimental PDF symbol recovery, it may read the bytes of a PDF in your vault to calculate a SHA-256 hash and compare it with a built-in index of previously verified PDF samples.
+
+For a PDF referenced by a supported local `file:` path, this recovery function can also access a **PDF outside the Obsidian vault** using the desktop filesystem API, provided the path passes its local-file and PDF checks. This access is for reading the file and calculating its fingerprint; the function does not write changes to the PDF. It does not recursively scan your filesystem. Unmatched files may fall back to ordinary text normalization or other available recovery methods.
+
+The symbol recovery code does not upload PDF contents or computed hashes to an external server. The built-in verification indexes are included with the plugin. The recovery function retains a small in-memory cache of document hashes during the plugin session.
+
+**Note:** This describes the v0.1.9 PDF symbol recovery code path, not a claim that every Obsidian PDF viewer or externally opened document is supported. As with other third-party plugins, review the code and back up your annotation data before use.
+
 ## Building from source
 
 Noctilucent v0.1.9 has a zero-dependency, reproducible Node.js build. Run `npm run check` to verify that the committed `main.js` matches the output generated from `src/main.template.js` and the two `src/data/` PDF recovery indexes; use `npm run build` to regenerate it. See [Build instructions](docs/BUILD.md) for details and caveats.
