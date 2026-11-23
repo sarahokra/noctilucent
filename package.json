@@ -1,0 +1,14 @@
+{
+  "name": "noctilucent",
+  "version": "0.1.9",
+  "private": true,
+  "description": "Obsidian PDF, Office Viewer, and Markdown Reading View highlighting and annotations",
+  "license": "MIT",
+  "scripts": {
+    "build": "node scripts/build.mjs && node --check main.js",
+    "check": "node scripts/build.mjs --check && node --check main.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
