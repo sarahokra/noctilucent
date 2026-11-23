@@ -6,7 +6,7 @@
 
 > **Preview status:** This project is not yet released through Obsidian Community Plugins. Earlier development notes report JavaScript/static checks, but not comprehensive real-world Obsidian testing. Back up your vault and annotation data, and try it in a test vault before using it for important research.
 
-[繁體中文說明](README.zh-TW.md) · [Development changelog](CHANGELOG.md)
+[Traditional Chinese guide](README.zh-TW.md) · [Changelog (English)](CHANGELOG.md) · [更新紀錄（繁體中文）](CHANGELOG.zh-TW.md)
 
 ## Features in the current preview
 
@@ -47,7 +47,7 @@ Under **Settings → Community plugins → Noctilucent → Interface language**,
 
 Noctilucent is under active development. The repository currently includes a bundled JavaScript plugin and language-resource files; a complete reproducible source/build workflow and broader compatibility testing remain publication preparation tasks.
 
-For individual changes, hotfixes, historical limitations, and test caveats through v0.1.9, see the [CHANGELOG](CHANGELOG.md).
+For individual changes, hotfixes, historical limitations, and test caveats through v0.1.9, see the [English changelog](CHANGELOG.md) or [Traditional Chinese changelog](CHANGELOG.zh-TW.md). The [original mixed-language development log](docs/CHANGELOG.original.md) is also preserved.
 
 ## License
 
