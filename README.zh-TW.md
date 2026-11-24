@@ -8,6 +8,8 @@
 
 ## 為什麼開發 Noctilucent？
 
+![Noctilucent Highlight Demo](assets/gifs/demo-highlight.gif)
+
 **自由高亮，隨需批註。**
 
 Noctilucent 的出發點是讓批註配合閱讀，而不是要求閱讀者先決定筆記類型、開啟固定側欄，或為每一段高亮立即寫下心得。

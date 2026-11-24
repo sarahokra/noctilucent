@@ -10,6 +10,8 @@
 
 ## Why Noctilucent?
 
+![Noctilucent Highlight Demo](assets/gifs/demo-highlight.gif)
+
 **Highlight freely. Annotate naturally.**
 
 Noctilucent was created around a reading-first approach: noticing an important passage should not require writing a note, choosing a semantic category, or opening a permanent sidebar.
