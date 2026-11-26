@@ -1,6 +1,6 @@
 # Noctilucent — Development Changelog
 
-This is the complete English-language record of versions v0.1.1 through v0.1.9, including individual hotfixes, technical limitations, and testing caveats. Entries are ordered from oldest to newest; historical caveats may have changed in later versions. These are development notes, **not proof of completed in-app acceptance testing**.
+This is the complete English-language record of versions v0.1.1 through v0.2.4, including individual hotfixes, technical limitations, and testing caveats. Entries are ordered from oldest to newest; historical caveats may have changed in later versions. These are development notes, **not proof of completed in-app acceptance testing**.
 
 **Language:** English | [Traditional Chinese](CHANGELOG.zh-TW.md) | [Original unabridged record](docs/CHANGELOG.original.md)
 
@@ -375,3 +375,36 @@ In the Noctilucent sidebar, choose **Export highlights and annotations…**. Thi
 - Share localization dictionaries across PDF, Office, and Markdown Reading View, including sidebar strings, annotation cards, save statuses, export dialogs, and system notices.
 - Translation changes user-interface strings only; source documents, text anchors, and existing annotation content in `data.json` remain untouched.
 - Development notes continue to use Traditional Chinese. More details are available in `README.zh-TW.md`.
+
+---
+
+## v0.2.0 — PDF performance hotfix
+
+- PDF performance improvements carried forward into v0.2.1. The standalone v0.2.0 release notes were not included in the supplied final archive; detailed claims are intentionally omitted.
+
+## v0.2.1 — Floating toolbar
+
+- Cycle vertical, horizontal and collapsed-icon layouts in PDF and Markdown/Office; narrow horizontal layouts wrap. Retained tools and annotation data.
+
+## v0.2.2 — Document support and export preferences
+
+- Independent PDF, Markdown and Office switches, enabled by default; disabling preserves annotations.
+- Vault-relative export folder and ten optional metadata/content fields; collision-safe export.
+
+## v0.2.3 — Visual Markdown export
+
+- Cards, Report, Sections, Parallel, Matrix, Minimal and Plain; document order + pinned or color grouping for each.
+- Six styled formats use proportional palette strips; Plain uses native Markdown.
+- Export layout/grouping selectors moved to the export dialog; per-document preferences, independent sidebar sorting and snapshot behavior retained.
+- Mock renderer checks covered seven layouts, two groupings and two locales; full Obsidian rendering regression remains pending.
+
+## v0.2.4 — Reading workspace and EPUB compatibility preview
+
+- Optional ePub Reader integration (off by default): text highlights, notes, continuous mode, text-anchored free notes, single-image/SVG regions, chapter and color export grouping.
+- Improved EPUB marker visibility, colors, sidebar focus and card placement; cross-chapter navigation requires manually opening the chapter.
+- Image regions: three styles, 5–60% fill opacity, PNG and image-plus-note copying, image-relative move/resize, undo/redo for style and geometry. Accessible image resources required.
+- Markdown Reading View fenced and inline code highlights use separate anchors to preserve legacy paragraph ordinals; single supported block only.
+- Bulk note display cycles collapsed → text preview → editable cards → collapsed in the existing sidebar row.
+- Live reader views independently retain continuous highlighting, toolbar layout, position and color; EPUB tool mode is view-local. PDF drawing and PDF/Markdown erasers remain exclusive.
+- Existing annotation schema and source documents are preserved; back up data.json before upgrading. EPUB and Office remain compatibility previews.
+- Development checks include JavaScript syntax, mock Chromium selection/iframe tests and isolated state tests as described in release notes. Author reports successful multi-view use; full cross-platform, old-data migration and host-viewer regression testing are not certified.
