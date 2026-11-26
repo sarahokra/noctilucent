@@ -1,9 +1,9 @@
 {
   "id": "noctilucent",
   "name": "Noctilucent",
-  "version": "0.1.9",
+  "version": "0.2.4",
   "minAppVersion": "1.12.0",
-  "description": "Local PDF, Office Viewer and Markdown Reading View highlights/annotations, with non-destructive Markdown export and Traditional Chinese/English UI.",
+  "description": "Local PDF, Office Viewer, Markdown Reading View and experimental ePub Reader annotations, with non-destructive Markdown export and Traditional Chinese/English UI.",
   "author": "AOI",
   "isDesktopOnly": true
 }

@@ -1,30 +1,28 @@
-# Building Noctilucent v0.1.9
+# Building Noctilucent v0.2.4
 
-This repository includes the source template for the existing desktop-only v0.1.9 distribution and two PDF recovery-data indexes. The build is designed to reproduce the original distributed `main.js` without changing runtime behavior.
+This dependency-free Node.js build reproduces the author's tested v0.2.4 distributed JavaScript without altering runtime code.
 
 ## Layout
 
-- `src/main.template.js`: plugin JavaScript, with two large index literals replaced by marked placeholders.
-- `src/data/verified-context.json`: verified PDF context and glyph mapping data.
-- `src/data/verified-spacing.json`: verified PDF spacing mapping data.
-- `src/i18n/en.js` and `src/i18n/zh-TW.js`: existing language-maintenance dictionaries. **The v0.1.9 builder does not import these files automatically**, because its source template already includes the embedded localization dictionaries. When editing a dictionary, also update the source template or extend the build script.
-- `scripts/build.mjs`: dependency-free Node.js build tool.
+- `src/main.template.js`: JavaScript with two marked PDF recovery index placeholders.
+- `src/data/verified-context.json` and `src/data/verified-spacing.json`: embedded recovery data extracted losslessly from the supplied v0.2.4 distribution.
+- `src/i18n/en.js`, `src/i18n/zh-TW.js`: maintenance references included in the supplied archive. The build does not import these files automatically; update the embedded dictionaries in the template when editing UI translations.
+- `scripts/build.mjs`: deterministic, dependency-free reconstruction. The replacement callback preserves literal dollar sequences in index data; check mode compares bytes.
 
-## Build commands
+## Commands
 
-Install Node.js 18 or newer. No `npm install` is required for this build.
+Install Node.js 18 or newer. No npm install is required.
 
 ```sh
 npm run check
 npm run build
+npm run check
 ```
 
-`npm run check` reconstructs the file in memory and checks it against tracked `main.js` without modifying it. `npm run build` writes `main.js` and checks its syntax.
+The builder validates the JSON indexes and manifest/package identity and version. Check mode does not modify `main.js`; build mode writes it and checks JavaScript syntax.
 
-The builder validates the JSON indexes and checks that `manifest.json` and `package.json` have matching plugin ID and version. **Distributable release files are still only `main.js`, `manifest.json`, and `styles.css`.**
+Expected SHA-256 of the supplied and reconstructed `main.js`:
 
-## Large-file note
+`e2e9c313e2aea9c03a02a445e5a6456a39574abf19a0bf7367b9655ae550d14b`
 
-The two verified PDF recovery indexes have been moved into `src/data/` for source maintenance, but the build **still embeds them in `main.js`**. This deliberately maintains the original v0.1.9 behavior, output bytes, and three-file installation process. It does **not** reduce the published `main.js` size. Future compression or runtime asset loading would require separate testing.
-
-This reconstruction proves that the file can be built reproducibly; it does not replace Obsidian integration testing or official directory review. Back up plugin `data.json` before testing changes.
+Size: 1,193,500 bytes. The two indexes remain embedded in the distributable; this does not reduce its runtime size. Release assets are still `main.js`, `manifest.json` and `styles.css` only. Never distribute personal `data.json` or backups. Reproducible reconstruction is not an Obsidian integration or cross-platform acceptance test.
